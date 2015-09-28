@@ -28,8 +28,44 @@ def seven_ate9(str_):
 # a case that will break this code.
 # The best implementation that I found was this one:
 def seven_ate9(str_):
-   while str_.find('797') != -1:
-       str_ = str_.replace('797','77')
-   return str_
+  while str_.find('797') != -1:
+    str_ = str_.replace('797','77')
+  return str_
 # You can tell that this one will work no matter what because it will keep using str_.find
 # to look for 797s and replace them as needed. In my opinion this is the safest implentation
+
+
+# Create a function that returns the lowest product of 4 consecutive numbers in a given string of numbers.
+# This should only work is the number has 4 digits of more. If not, return "Number is too small".
+def lowest_product(input):
+  if len(input) < 4:
+    return "Number is too small"
+  numList = [int(x) for x in list(input)]
+  lowest = 1
+  for i in numList[:4]:
+    lowest *= i
+  current = lowest
+  if lowest == 0:
+    return 0
+  for i in range(4,len(numList)):
+    if numList[i] == 0:
+      return 0
+    current *= numList[i]
+    current //= numList[i-4]
+    if current < lowest:
+      lowest = current
+  return lowest
+# At first I believed that my implementation was pretty clever. I start with the product of
+# the first four integers then iterate through the rest of the list. As I iterate, I multiply
+# by the newest number encountered and divide by the oldest number in the list. This results
+# in a new product of four numbers. If it is the smallest that I've seen so far, then I save
+# it as the lowest. At the end of the iteration, I return the lowest. This strategy works as
+# long as there are no zeros in the input since were dividing. To fix this, As soon as I encounter
+# a zero, I return zero.
+def lowest_product(input):
+  s = map(int, str(input))
+  if len(s) < 4:
+    return "Number is too small"
+  return min(map(lambda a,b,c,d : a * b * c * d, s[:-3], s[1:-2], s[2:-1], s[3:]))
+# This was the highest rated solution for this problem. Its concise and clever but it iterates through
+# the list four times and It is a bit harder to read. I still want to spend some time picking this one apart
