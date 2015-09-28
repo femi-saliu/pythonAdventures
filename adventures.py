@@ -78,21 +78,21 @@ def lowest_product(input):
 # otherwise return the missing element.
 # Note that the sequence may be shuffled.
 def find_missing_number(sequence):
-    nums = [int(x) for x in sorted(sequence.split())]
-    if len(nums) == 0:
-        return 0
-    if nums[0] != 1:
-        return 1
-    for i in range(len(nums)-1):
-        if nums[i]+1 != nums[i+1]:
-            return nums[i]+1
+  nums = [int(x) for x in sorted(sequence.split())]
+  if len(nums) == 0:
     return 0
+  if nums[0] != 1:
+    return 1
+  for i in range(len(nums)-1):
+    if nums[i]+1 != nums[i+1]:
+      return nums[i]+1
+  return 0
 # There were a lot of edge cases that I kept running into so in the end, my code didnt work
 # This was the best solution that I found:
 def find_missing_number(sequence):
-    if not len(sequence): return 0
-    sequence = [i for i in sequence.split() if i.isdigit()]
-    if not len(sequence): return 1
-    for i in range(1, max(map(int,sequence))):
-        if str(i) not in sequence: return i
-    return 0
+  if not len(sequence): return 0
+  sequence = [i for i in sequence.split() if i.isdigit()]
+  if not len(sequence): return 1
+  for i in range(1, max(map(int,sequence))):
+    if str(i) not in sequence: return i
+  return 0
