@@ -69,3 +69,30 @@ def lowest_product(input):
   return min(map(lambda a,b,c,d : a * b * c * d, s[:-3], s[1:-2], s[2:-1], s[3:]))
 # This was the highest rated solution for this problem. Its concise and clever but it iterates through
 # the list four times and It is a bit harder to read. I still want to spend some time picking this one apart
+
+
+# You have a sequence of positive numbers starting with 1, but one number is missing!
+# Find out the missing number; if the sequence is not broken, you should return 0.
+# Each sequence always increments by 1.
+# In short: an invalid sequence must return 1, an already complete (or empty) sequence must return 0;
+# otherwise return the missing element.
+# Note that the sequence may be shuffled.
+def find_missing_number(sequence):
+    nums = [int(x) for x in sorted(sequence.split())]
+    if len(nums) == 0:
+        return 0
+    if nums[0] != 1:
+        return 1
+    for i in range(len(nums)-1):
+        if nums[i]+1 != nums[i+1]:
+            return nums[i]+1
+    return 0
+# There were a lot of edge cases that I kept running into so in the end, my code didnt work
+# This was the best solution that I found:
+def find_missing_number(sequence):
+    if not len(sequence): return 0
+    sequence = [i for i in sequence.split() if i.isdigit()]
+    if not len(sequence): return 1
+    for i in range(1, max(map(int,sequence))):
+        if str(i) not in sequence: return i
+    return 0
