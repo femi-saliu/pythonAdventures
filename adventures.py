@@ -96,3 +96,22 @@ def find_missing_number(sequence):
   for i in range(1, max(map(int,sequence))):
     if str(i) not in sequence: return i
   return 0
+# Make a program that takes a list of a random amount (but will always have atleast 1 number in)
+# of numbers and returns the average, or mean, of the numbers.
+# Also the program should return "Incorrect" if the value entered is a string.
+def average(x):
+    if type(x) != list:
+        return "Incorrect"
+    result = 0
+    for i in x:
+        result += i
+    return result // len(x)
+# This was my favorite solution
+def average(xs):
+    try:
+        return sum(xs)/len(xs)
+    except:
+        return "Incorrect"
+# I didnt know about sum() before this problem and I had never used python try catch blocks
+# One big difference between python and javascript is that python throws exceptions where js
+# will just return undefined or something so its smart to take advantage of those exceptions
