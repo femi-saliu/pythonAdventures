@@ -132,3 +132,23 @@ def multiple(x):
 # This was the coolest solution
 def multiple(x):
     return 'Bang' * (x % 3 == 0) + 'Boom' * (x % 5 == 0) or 'Miss'
+# Make a multiple functions that will print the sum, difference, modulus, product, quotient, and the exponent.
+def add(a,b):
+    return a+b
+def multiply(a,b):
+    return a*b
+def divide(a,b):
+    return a/b
+def mod(a,b):
+    return a%b
+def exponent(a,b):
+    return a**b
+def subt(a,b):
+    return a-b
+# This is another way to do the same thing
+add = lambda a, b: a + b
+multiply = lambda a, b: a * b
+divide = lambda a, b: a / b
+mod = lambda a, b: a % b
+exponent = lambda a, b: a ** b
+subt = lambda a, b:a - b
