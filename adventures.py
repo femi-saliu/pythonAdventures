@@ -152,3 +152,32 @@ divide = lambda a, b: a / b
 mod = lambda a, b: a % b
 exponent = lambda a, b: a ** b
 subt = lambda a, b:a - b
+
+# At this point im starting to implement functions from cracking the coding interview
+def isPermutation(str1,str2):
+    return sorted(list(str1)) == sorted(list(str2))
+
+def uniqueLetters(string):
+    for i in range(len(string)):
+        if string.rfind(string[i]) != i:
+            return False
+    return True
+
+def replaceSpaces(string):
+    while string[-1] == " ":
+        string = string[:-1]
+    return string.replace(" ","%20")
+
+def compressString(string):
+    result = ""
+    count = 0
+    cLetter = string[0]
+    for i in string:
+        if i == cLetter:
+            count += 1
+        else :
+            result = result + cLetter + str(count)
+            count = 1
+            cLetter = i
+    result = result + cLetter + str(count)
+    return result
