@@ -115,3 +115,20 @@ def average(xs):
 # I didnt know about sum() before this problem and I had never used python try catch blocks
 # One big difference between python and javascript is that python throws exceptions where js
 # will just return undefined or something so its smart to take advantage of those exceptions
+
+#Make a program that takes a value (x) and returns "Bang" if the number is divisible by 3,
+# "Boom" if it is divisible by 5, "BangBoom" if it divisible by 3 and 5,
+# and "Miss" if it isn't divisible by any of them.
+# Note: Your program should only return one value
+def multiple(x):
+    if x%15 == 0:
+        return "BangBoom"
+    if x%5 == 0:
+        return "Boom"
+    if x%3 == 0:
+        return "Bang"
+    return "Miss"
+# Its just a variation of FizzBuzz
+# This was the coolest solution
+def multiple(x):
+    return 'Bang' * (x % 3 == 0) + 'Boom' * (x % 5 == 0) or 'Miss'
